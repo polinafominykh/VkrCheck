@@ -78,9 +78,13 @@ pip install -r requirements.txt
 
 Если используется OpenAI-compatible endpoint, параметры подключения хранятся в файле .env.
 
+Пример содержимого файла `.env`: 
+
+```bash
 GPT_OSS_HOST=http://<host>:<port>/v1
 GPT_OSS_KEY=<api_key>
 GPT_OSS_MODEL_NAME=<model_name>
+```
 
 ## Основные сценарии запуска
 
