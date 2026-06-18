@@ -76,13 +76,11 @@ pip install -r requirements.txt
 
 ### Настройка модели
 
-Если используется OpenAI-compatible endpoint, в клиенте модели или в переменных окружения должны быть указаны:
+Если используется OpenAI-compatible endpoint, параметры подключения хранятся в файле .env.
 
-```bash
-GPT_OSS_HOST=http://10.32.2.11:8041/v1
-GPT_OSS_KEY=token-abc123
-GPT_OSS_MODEL_NAME=qwen3-32b
-```
+GPT_OSS_HOST=http://<host>:<port>/v1
+GPT_OSS_KEY=<api_key>
+GPT_OSS_MODEL_NAME=<model_name>
 
 ## Основные сценарии запуска
 
