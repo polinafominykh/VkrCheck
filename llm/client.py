@@ -1,7 +1,11 @@
 import json
+import os
 import re
 from typing import Any, Dict, Optional
+from dotenv import load_dotenv
 from openai import OpenAI
+
+load_dotenv()
 
 class LLMClient:
     def __init__(
@@ -10,9 +14,9 @@ class LLMClient:
         api_key: Optional[str] = None,
         model_name: Optional[str] = None,
     ) -> None:
-        self.base_url = base_url or "http://10.32.2.11:8041/v1"
-        self.api_key = api_key or "token-abc123"
-        self.model_name = model_name or "qwen3-32b"
+        self.base_url = base_url or os.getenv("GPT_OSS_HOST", "").strip()
+        self.api_key = api_key or os.getenv("GPT_OSS_KEY", "").strip()
+        self.model_name = model_name or os.getenv("GPT_OSS_MODEL_NAME", "").strip()
 
         self.enabled = bool(self.base_url and self.api_key and self.model_name)
 
