@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VKRGuard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #111;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #d8d8d8;
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 18px;
+    }
+
+    h1, h2 {
+      margin-top: 0;
+    }
+
+    .muted {
+      color: #666;
+    }
+
+    .agents {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 16px 0 20px;
+    }
+
+    .agent-btn {
+      border: 1px solid #111;
+      background: #fff;
+      color: #111;
+      border-radius: 10px;
+      padding: 12px 18px;
+      cursor: pointer;
+      transition: 0.15s ease;
+      font-size: 16px;
+    }
+
+    .agent-btn:hover {
+      background: #f0f0f0;
+    }
+
+    .agent-btn.active {
+      background: #111;
+      color: #fff;
+    }
+
+    .run-btn {
+      background: #111;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 22px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .run-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .metrics {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .metric {
+      border: 1px solid #d8d8d8;
+      border-radius: 10px;
+      padding: 12px 16px;
+      min-width: 130px;
+      background: #fff;
+    }
+
+    .result-item {
+      border-top: 1px solid #ddd;
+      padding: 14px 0;
+    }
+
+    .status {
+      display: inline-block;
+      min-width: 150px;
+      font-weight: bold;
+    }
+
+    .downloads a {
+      display: inline-block;
+      margin-right: 12px;
+      margin-top: 8px;
+      color: #111;
+      text-decoration: none;
+      border: 1px solid #111;
+      border-radius: 8px;
+      padding: 8px 12px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #fafafa;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <h1>VKRCheck</h1>
+      <p class="muted">Выберите один или несколько  и загрузите файл ВКР.</p>
+
+      <input id="fileInput" type="file" accept=".pdf,.docx" />
+
+      <div class="agents">
+        <button type="button" class="agent-btn" data-agent="formal">Формальная проверка</button>
+        <button type="button" class="agent-btn" data-agent="structure">Проверка структуры</button>
+        <button type="button" class="agent-btn" data-agent="semantic">Смысловая проверка</button>
+      </div>
+
+      <button type="button" id="runBtn" class="run-btn">Запустить анализ</button>
+      <p id="statusText" class="muted"></p>
+    </div>
+
+    <div id="summaryCard" class="card hidden">
+      <h2>Сводка</h2>
+      <div id="metrics" class="metrics"></div>
+      <div id="downloads" class="downloads"></div>
+    </div>
+
+    <div id="formalCard" class="card hidden">
+      <h2>Формальные и структурные результаты</h2>
+      <div id="formalResults"></div>
+    </div>
+
+    <div id="semanticCard" class="card hidden">
+      <h2>Смысловые результаты</h2>
+      <div id="semanticResults"></div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

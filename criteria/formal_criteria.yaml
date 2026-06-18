@@ -1,0 +1,18 @@
+required_sections:
+  - introduction
+  - conclusion
+  - references
+
+optional_sections:
+  - appendix
+  - abbreviations
+
+thresholds:
+  min_introduction_chars: 500
+  min_reference_items: 5
+  min_top_level_chapters: 2
+  max_top_level_chapters: 8
+
+patterns:
+  reference_item: '^\d+[\.\)]?\s+'
+  top_level_chapter: '^\d+\s+'
